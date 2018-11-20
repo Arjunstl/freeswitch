@@ -263,47 +263,20 @@
 
 <!-- mod_verto 1st november -->
 
-<extension name="verto call" continue="true">
-    <condition field="caller-source" expression="mod_verto">
-        <action application="log" data="INFO ***** Verto WebRTC Call ***** "/>
-    </condition>
+<extension name="test-verto">
+	<condition field="destination_number" expression="^(.*)$">
+<!--		<action application="set" data="bypass_media=true"/>
+		<action application="set" data="bypass_media=true"/> -->
+<action application="log" data="INFO A-PUBLIC-IP is '${sip_received_ip}'"/>
+<action application="log" data="INFO domain is '${domain_name}'"/>
+<!--<action application="set" data="sip_from_user=910000000012"/>-->
+		<action application="set" data="effective_caller_id_number=${caller_id_number}"/>
+		<action applicaiton="log" data="This is VERTO test"/>
+		<action application="info"/> <!--sip_from_display='910000000012',sip_from_uri='910000000012@${domain_name}' for stripping from header-->
+		<acrion application="bridge" data="{sip_invite_tel_params='account=910000000888888,RA=${caller_id_number},country=91,ST=1',sip_h-A-PUBLIC-IP='${sip_received_ip}'}sofia/external/$1@115.248.91.197"/> <!-- gateway/test/$1"/>-->
+	</condition>
 </extension>
 
-<extension name="itsp_send_call">
-<condition field="destination_number" expression="^(100sds)$">
-<!--<action application="answer"/> -->
-<action application="playback" data="silence_stream://2000"/>
-<action application="set" data="effective_caller_id_number=333444555"/>
-<action application="set" data="effective_caller_id_name=ciaociaociao"/>
-
-<!--<action application="bridge" data="{absolute_codec_string=pcmu}sofia/gateway/itsp/$1"/>-->
-
-<action application="bridge" data="${verto_contact ${dialed_user}@${dialed_domain}}"/>
-</condition>
-</extension>
-
-
-<include>
-  <extension name="verto_test">
-    <condition field="destination_number" expression="^(10083434)$">
-             <action application="answer"/>
-             <action application="log" data="INFO ********* VERTO WEBRTC CALL *******" />
-             <action application="sleep" data="5000"/>
-             <action application="hangup" />
-    </condition>
-  </extension>
-</include>
-
-
-<include>
-  <extension name="webRTC_test">
-    <condition field="destination_number" expression="^(1008)$">
-             <action application="log" data="INFO ********* VERTO WEBRTC CALL *******" />
-             <action application="sleep" data="1000"/>
-             <action application="bridge" data="user/1008"/>
-    </condition>
-  </extension>
-</include>
 
 
 <!-- end -->

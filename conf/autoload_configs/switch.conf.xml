@@ -150,6 +150,11 @@
     <!-- <param name="rtp-start-port" value="16384"/> -->
     <!-- <param name="rtp-end-port" value="32768"/> -->
 
+<!-- november 14th for one way audio -->
+<param name="rtp-start-port" value="16384"/>
+<param name="rtp-end-port" value="32768"/> 
+
+
     <!-- Test each port to make sure it is not in use by some other process before allocating it to RTP -->
     <!-- <param name="rtp-port-usage-robustness" value="true"/> -->
 
@@ -161,7 +166,10 @@
     -->
     <!-- <param name="rtp-retain-crypto-keys" value="true"/> -->
 
-    <!-- <param name="core-db-dsn" value="pgsql://hostaddr=127.0.0.1 dbname=freeswitch user=freeswitch password='' options='-c client_min_messages=NOTICE'" /> -->
+<!--november 14th -->
+<param name="core-db-dsn" value="pgsql://hostaddr=127.0.0.1 dbname=rgc user=rgc password='stl@@126' options='-c client_min_messages=NOTICE'" />
+
+
     <!-- <param name="core-db-dsn" value="dsn:username:password" /> -->
     <!-- 
 	 Allow to specify the sqlite db at a different location (In this example, move it to ramdrive for

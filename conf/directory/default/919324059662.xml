@@ -1,19 +1,18 @@
 <include>
-  <user id="1008">
+  <user id="919324059662">
     <params>
-      <param name="password" value="1008"/>
-      <param name="vm-password" value="1008"/>
+      <param name="password" value="3434"/>
+      <param name="vm-password" value="3434"/>
     </params>
     <variables>
       <variable name="toll_allow" value="domestic,international,local"/>
-      <variable name="accountcode" value="1008"/>
+      <variable name="accountcode" value="919324059662"/>
       <variable name="user_context" value="default"/>
-      <variable name="effective_caller_id_name" value="Extension 1008"/>
-      <variable name="effective_caller_id_number" value="1008"/>
+      <variable name="effective_caller_id_name" value="919324059662"/>
+      <variable name="effective_caller_id_number" value="919324059662"/>
       <variable name="outbound_caller_id_name" value="$${outbound_caller_name}"/>
       <variable name="outbound_caller_id_number" value="$${outbound_caller_id}"/>
+      <variable name="callgroup" value="techsupport"/>
     </variables>
   </user>
 </include>
-
-

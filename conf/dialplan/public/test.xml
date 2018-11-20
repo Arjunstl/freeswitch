@@ -1,0 +1,52 @@
+<include>
+  <extension name="startelelogic">
+    <condition field="destination_number" expression="^(11)$">
+      <!--
+          If you're hosting multiple domains you will want to set the
+          target_domain on these calls so they hit the proper domain after you
+          transfer the caller into the default context.
+
+          $${domain} is the default domain set from vars.xml but you can set it
+          to any domain you have setup in your user directory.
+
+      -->
+      <action application="set" data="domain_name=$${domain}"/>
+      <!-- This example maps the DID 5551212 to ring 1000 in the default context -->
+      <action application="transfer" data="9999 XML default"/>
+    </condition>
+  </extension>
+
+
+
+
+
+<!-- mod_verto 1st november -->
+
+<extension name="verto call" continue="true">
+    <condition field="caller-source" expression="mod_verto">
+        <action application="log" data="INFO ***** Verto WebRTC Call ***** "/>
+    </condition>
+</extension>
+
+<extension name="itsp_send_call">
+<condition field="destination_number" expression="^(.*)$">
+<action application="answer"/>
+<action application="playback" data="silence_stream://2000"/>
+<action application="set" data="effective_caller_id_number=333444555"/>
+<action application="set" data="effective_caller_id_name=ciaociaociao"/>
+
+<!--<action application="bridge" data="{absolute_codec_string=pcmu}sofia/gateway/itsp/$1"/>-->
+
+<action application="bridge" data="${verto_contact ${dialed_user}@${dialed_domain}}"/>
+</condition>
+</extension>
+
+
+
+
+
+
+
+</include>
+
+
